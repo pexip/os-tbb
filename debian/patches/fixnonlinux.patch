@@ -1,0 +1,62 @@
+Description: tweak system inspection to build on hurd/kFreeBSD/x32 systems
+Author: Mathieu Malaterre <malat@debian.org>
+
+--- a/build/common.inc
++++ b/build/common.inc
+@@ -29,6 +29,14 @@
+   ifeq ($(OS), Linux)
+     export tbb_os=linux
+   endif
++  # hurd-386
++  ifeq ($(OS), GNU)
++    export tbb_os=linux
++  endif
++  # kfreebsd-*
++  ifeq ($(OS), GNU/kFreeBSD)
++    export tbb_os=FreeBSD
++  endif
+   ifeq ($(OS), Darwin)
+     export tbb_os=macos
+   endif
+--- a/build/linux.gcc.inc
++++ b/build/linux.gcc.inc
+@@ -105,6 +105,11 @@
+     LIB_LINK_FLAGS += -m32
+ endif
+ 
++ifeq (x32,$(arch))
++    CPLUS_FLAGS += -mx32
++    LIB_LINK_FLAGS += -mx32
++endif
++
+ ifeq (bg,$(arch))
+     CPLUS = $(firstword $(notdir $(shell which powerpc{64,32,}-bg{z..a}-linux-g++ 2>/dev/null)))
+     CONLY = $(firstword $(notdir $(shell which powerpc{64,32,}-bg{z..a}-linux-gcc 2>/dev/null)))
+--- a/build/BSD.inc
++++ b/build/BSD.inc
+@@ -13,15 +13,22 @@
+ # limitations under the License.
+ 
+ ifndef arch
+-        ifeq ($(shell uname -m),i386)
++        uname_m:=$(shell uname -m)
++        uname_a:=$(shell uname -a)
++        ifeq ($(uname_m),i386)
+                 export arch:=ia32
+         endif
+-        ifeq ($(shell uname -m),ia64)
++        ifeq ($(uname_m),ia64)
+                 export arch:=ia64
+         endif
+-        ifeq ($(shell uname -m),amd64)
++        ifeq ($(uname_m),amd64)
+                 export arch:=intel64
+         endif
++        ifndef arch
++                export arch:=$(uname_m)
++                $(warning "FreeBSD Unknown arch: " $(arch))
++                $(warning "FreeBSD Unknown uname_a: " $(uname_a))
++        endif
+ endif
+ 
+ ifndef runtime

@@ -1,0 +1,29 @@
+From: Helmut Grohne <helmut@subdivi.de>
+Subject: have tbb honour $(CC) and $(CXX)
+
+--- a/build/FreeBSD.gcc.inc
++++ b/build/FreeBSD.gcc.inc
+@@ -24,8 +24,8 @@
+ DYLIB_KEY = -shared
+ WARNING_SUPPRESS = -Wno-parentheses
+ 
+-CPLUS = g++ 
+-CONLY = gcc
++CPLUS = $(CXX)
++CONLY = $(CC)
+ LIB_LINK_FLAGS = -shared
+ LIBS = -lpthread 
+ C_FLAGS = $(CPLUS_FLAGS)
+--- a/build/linux.gcc.inc
++++ b/build/linux.gcc.inc
+@@ -12,8 +12,8 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-CPLUS ?= g++
+-CONLY ?= gcc
++CPLUS ?= $(CXX)
++CONLY ?= $(CC)
+ COMPILE_ONLY = -c -MMD
+ PREPROC_ONLY = -E -x c++
+ INCLUDE_KEY = -I
