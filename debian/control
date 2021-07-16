@@ -1,6 +1,7 @@
 Source: tbb
-Maintainer: Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>
-Uploaders: Steve Capper <steven.capper@gmail.com>,
+Maintainer: Pexip AS <packaging@pexip.com>
+XSBC-Pexip-Original-Maintainer: Debian Science Maintainers <debian-science-maintainers@lists.alioth.debian.org>
+XSBC-Pexip-Original-Uploaders: Steve Capper <steven.capper@gmail.com>,
            Mo Zhou <lumin@debian.org>
 Section: libs
 Priority: optional
@@ -15,6 +16,7 @@ Vcs-Browser: https://salsa.debian.org/science-team/tbb
 Vcs-Git: https://salsa.debian.org/science-team/tbb.git
 Homepage: https://www.threadingbuildingblocks.org/
 Rules-Requires-Root: no
+XS-Pexip-Upstream: http://ftp.debian.org/debian/ bullseye
 
 Package: libtbb-dev
 Architecture: linux-any
