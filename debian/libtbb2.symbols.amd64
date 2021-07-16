@@ -302,8 +302,6 @@ libtbbmalloc.so.2 libtbb2 #MINVER#
  MallocInitializeITT@Base 2017~U7
  _Z9parseFileILi100ELi1EEvPKcRAT0__K13parseFileItem@Base 2018~U6
  _Z9parseFileILi100ELi2EEvPKcRAT0__K13parseFileItem@Base 2018~U6
- _ZN11MallocMutex11scoped_lockD1Ev@Base 2020.3
- _ZN11MallocMutex11scoped_lockD2Ev@Base 2020.3
  _ZN3rml10pool_msizeEPNS_10MemoryPoolEPv@Base 2019~U4
  _ZN3rml10pool_resetEPNS_10MemoryPoolE@Base 2017~U7
  _ZN3rml11pool_createElPKNS_13MemPoolPolicyE@Base 2017~U7
