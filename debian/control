@@ -16,7 +16,7 @@ Vcs-Browser: https://salsa.debian.org/science-team/tbb
 Vcs-Git: https://salsa.debian.org/science-team/tbb.git
 Homepage: https://www.threadingbuildingblocks.org/
 Rules-Requires-Root: no
-XS-Pexip-Upstream: http://ftp.debian.org/debian/ bullseye
+XS-Pexip-Upstream: http://deb.debian.org/debian/ bullseye
 
 Package: libtbb-dev
 Architecture: linux-any
